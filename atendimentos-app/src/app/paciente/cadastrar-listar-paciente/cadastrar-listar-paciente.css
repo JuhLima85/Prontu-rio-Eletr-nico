@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+  }
+  
+.full-width {
+    width: 100%;
+}
+
+.toolbar-spacing {
+    margin-top: 50px; 
+}
+
+.half-width {
+    width: 50%;
+}
+
+.link-style {
+    text-decoration: none; 
+    color: inherit; 
+}
