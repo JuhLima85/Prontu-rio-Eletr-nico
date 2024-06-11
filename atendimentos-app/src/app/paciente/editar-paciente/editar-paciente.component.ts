@@ -29,7 +29,7 @@ export class EditarPacienteComponent implements OnInit {
   }
   
   carregarDetalhesPaciente() {
-    this.service.getContatoById(this.id).subscribe((paciente: Paciente) => {
+    this.service.getPacienteById(this.id).subscribe((paciente: Paciente) => {
       this.paciente = paciente;
       this.atualizarFormulario();
     });

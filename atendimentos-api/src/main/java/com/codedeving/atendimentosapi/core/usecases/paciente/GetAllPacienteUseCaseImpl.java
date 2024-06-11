@@ -1,4 +1,4 @@
-package com.codedeving.atendimentosapi.core.usecases;
+package com.codedeving.atendimentosapi.core.usecases.paciente;
 
 import com.codedeving.atendimentosapi.core.domain.Paciente;
 import com.codedeving.atendimentosapi.core.gateways.PacienteGateway;
@@ -9,13 +9,9 @@ public class GetAllPacienteUseCaseImpl implements GetAllPacienteUseCase {
     private final PacienteGateway pacienteGateway;
 
     public GetAllPacienteUseCaseImpl(PacienteGateway pacienteGateway) {
+
         this.pacienteGateway = pacienteGateway;
     }
-
-    //    @Override
-//    public List<Contato> execute() {
-//        return contatoGateway.obtainAllContatos();
-//    }
 
     @Override
     public Page<Paciente> execute(Integer pagina, Integer tamanhoPagina) {

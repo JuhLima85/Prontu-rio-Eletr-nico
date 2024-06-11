@@ -33,12 +33,8 @@ public class PacienteRepositoryGateway implements PacienteGateway {
     }
 
     @Override
-    public Paciente findByEmail(String email) {
-        PacienteEntity entity = pacienteRepository.findByEmail(email);
-        if (entity == null){
-            return null;
-        }
-        return entityMapper.toPaciente(entity);
+    public Optional<Paciente> findByCpf(String cpf) {
+        return pacienteRepository.findByCpf(cpf).map(entityMapper::toPaciente);
     }
 
     @Override
@@ -56,10 +52,9 @@ public class PacienteRepositoryGateway implements PacienteGateway {
     }
 
     @Override
-    public Paciente obterPacientePorId(Integer id) {
+    public  Optional<Paciente> findById(Integer id) {
         return pacienteRepository.findById(id)
-                .map(entityMapper::toPaciente)
-                .orElseThrow(() -> new PacienteNotFoundException("Paciente não encontrado"));
+                .map(entityMapper::toPaciente);
     }
 
     @Override

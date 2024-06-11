@@ -1,6 +1,7 @@
 package com.codedeving.atendimentosapi.infrastructure.exceptions;
 
 
+import com.codedeving.atendimentosapi.core.exceptions.AtendimentoNotFoundException;
 import com.codedeving.atendimentosapi.core.exceptions.PacienteExistingException;
 import com.codedeving.atendimentosapi.core.exceptions.PacienteNotFoundException;
 import com.codedeving.atendimentosapi.core.exceptions.RestErrorMessage;
@@ -22,6 +23,12 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     private ResponseEntity<RestErrorMessage> pacienteExistingException(PacienteExistingException e){
         RestErrorMessage errorMessage = new RestErrorMessage(HttpStatus.CONFLICT, e.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(errorMessage);
+    }
+
+    @ExceptionHandler(AtendimentoNotFoundException.class)
+    private ResponseEntity<RestErrorMessage> atendimentoNotFoundException(AtendimentoNotFoundException e) {
+        RestErrorMessage errorMessage = new RestErrorMessage(HttpStatus.NOT_FOUND, e.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
     }
 
 }

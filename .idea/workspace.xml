@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6bf17e54-fda8-4177-8998-d3a6fdb89611" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/exceptions/AtendimentoNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/gateways/AtendimentoGateway.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/usecases/atendimento/CreateAtendimentoUseCase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/usecases/atendimento/CreateAtendimentoUseCaseImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/usecases/atendimento/DeleteAtendimentoUseCase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/usecases/atendimento/DeleteAtendimentoUseCaseImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/usecases/atendimento/GetAllAtendimentosUseCase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/usecases/atendimento/GetAllAtendimentosUseCaseImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/usecases/atendimento/GetAtendimentoByIdUseCase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/usecases/atendimento/GetAtendimentoByIdUseCaseImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/usecases/atendimento/UpdateAtendimentoUseCase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/usecases/atendimento/UpdateAtendimentoUseCaseImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/configuration/AtendimentoBeansConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/controllers/AtendimentoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/converters/AtendimentoDtoMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/converters/AtendimentoEntityMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/dtos/AtendimentoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/gateways/AtendimentoRepositoryGateway.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/persistence/entities/AtendimentoEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/persistence/repository/AtendimentoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/domain/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/domain/Paciente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/gateways/PacienteGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/gateways/PacienteGateway.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/usecases/AddPhotoUseCase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/usecases/AddPhotoUseCaseImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/usecases/CreatePacienteUseCase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/usecases/CreatePacienteUseCaseImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/usecases/DeletePacienteUseCase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/usecases/DeletePacienteUseCaseImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/usecases/FavoritePacienteUseCase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/usecases/FavoritePacienteUseCaseImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/usecases/GetAllPacienteUseCase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/usecases/GetAllPacienteUseCaseImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/usecases/GetPacienteByIdUseCase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/usecases/GetPacienteByIdUseCaseImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/usecases/UpdatePacienteUseCase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/core/usecases/UpdatePacienteUseCaseImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/configuration/BeansConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/configuration/PacienteBeansConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/controllers/PacienteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/controllers/PacienteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/converters/PacienteDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/converters/PacienteDtoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/converters/PacienteEntityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/converters/PacienteEntityMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/dtos/PacienteDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/dtos/PacienteDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/exceptions/RestExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/exceptions/RestExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/gateways/PacienteRepositoryGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/gateways/PacienteRepositoryGateway.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/persistence/entities/PacienteEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/persistence/entities/PacienteEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/persistence/repository/PacienteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/atendimentos-api/src/main/java/com/codedeving/atendimentosapi/infrastructure/persistence/repository/PacienteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-app/src/app/paciente/cadastrar-listar-paciente/cadastrar-listar-paciente.html" beforeDir="false" afterPath="$PROJECT_DIR$/atendimentos-app/src/app/paciente/cadastrar-listar-paciente/cadastrar-listar-paciente.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atendimentos-app/src/app/paciente/cadastrar-listar-paciente/cadastrar-listar-paciente.ts" beforeDir="false" afterPath="$PROJECT_DIR$/atendimentos-app/src/app/paciente/cadastrar-listar-paciente/cadastrar-listar-paciente.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2gxcwFtDUDcEqtNErcFzPnvJbCT" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/workspace-intelliJ/atendimentos/atendimentos-api"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6bf17e54-fda8-4177-8998-d3a6fdb89611" name="Changes" comment="" />
+      <created>1716642905636</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1716642905636</updated>
+    </task>
+    <servers />
+  </component>
+</project>

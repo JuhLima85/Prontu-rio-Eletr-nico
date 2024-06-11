@@ -5,14 +5,14 @@ import { Observable } from 'rxjs';
 import { Paciente } from '../domain/paciente';
 
 import { environment } from '../environments/environment';
-import { PaginaContato } from '../domain/paginacao';
+import { Pagina } from '../domain/paginacao';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PacienteService {
 
-  url: string = environment.apiBaseUrl;
+  url: string = environment.apiBaseUrl + 'pacientes';
 
   constructor(
     private http: HttpClient
@@ -22,9 +22,14 @@ export class PacienteService {
     return this.http.post<Paciente>(this.url, paciente);
   }
 
-  list(page: number, size: number) : Observable<PaginaContato>{
+ /* list(page: number, size: number) : Observable<PaginaContato>{
     const params = new HttpParams().set('page', page).set('size',size)    
     return this.http.get<any>(`${this.url}?${params.toString()}`);
+  }*/
+
+  list(page: number, size: number): Observable<Pagina<Paciente>> {
+    const params = new HttpParams().set('page', page).set('size', size);    
+    return this.http.get<Pagina<Paciente>>(`${this.url}`, { params });
   }
 
   favourite(paciente: Paciente) : Observable<any> {
@@ -39,7 +44,7 @@ export class PacienteService {
     return this.http.delete(`${this.url}/${paciente.id}`);
   }
   
-  getContatoById(id: number): Observable<Paciente> {
+  getPacienteById(id: number): Observable<Paciente> {
     return this.http.get<Paciente>(`${this.url}/${id}`);
   }
   

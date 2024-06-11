@@ -1,6 +1,8 @@
-package com.codedeving.atendimentosapi.core.usecases;
+package com.codedeving.atendimentosapi.core.usecases.paciente;
 
 import com.codedeving.atendimentosapi.core.domain.Paciente;
+import com.codedeving.atendimentosapi.core.exceptions.AtendimentoNotFoundException;
+import com.codedeving.atendimentosapi.core.exceptions.PacienteNotFoundException;
 import com.codedeving.atendimentosapi.core.gateways.PacienteGateway;
 
 public class GetPacienteByIdUseCaseImpl implements GetPacienteByIdUseCase {
@@ -13,6 +15,7 @@ public class GetPacienteByIdUseCaseImpl implements GetPacienteByIdUseCase {
 
     @Override
     public Paciente execute(Integer id) {
-        return pacienteGateway.obterPacientePorId(id);
+        return pacienteGateway.findById(id)
+                .orElseThrow(() -> new PacienteNotFoundException());
     }
 }

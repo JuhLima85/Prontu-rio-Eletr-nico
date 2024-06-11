@@ -1,0 +1,20 @@
+<mat-card class="detalhes-card">
+    <mat-card-header>
+        <mat-card-title class="titulo">
+            <mat-icon>menu_book</mat-icon>
+            Detalhes do Atendimento
+        </mat-card-title>
+    </mat-card-header>
+    
+    <mat-card-content>
+        <p>
+            <strong>{{ historico }}</strong> <br/>
+            
+        </p>
+    </mat-card-content>
+    <mat-card-actions class="actions">
+        <button mat-raised-button color="primary" (click)="fechar()">
+            Fechar
+        </button>
+    </mat-card-actions>
+</mat-card>

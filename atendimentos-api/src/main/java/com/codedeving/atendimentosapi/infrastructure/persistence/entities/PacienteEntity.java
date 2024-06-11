@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class PacienteEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
     private String cpf;

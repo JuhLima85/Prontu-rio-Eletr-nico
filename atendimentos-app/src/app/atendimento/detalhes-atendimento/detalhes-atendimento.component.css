@@ -1,0 +1,17 @@
+.detalhes-card {   
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    width: 500px;
+    height: 550px;
+    margin: auto;
+}
+
+.titulo {     
+    margin-bottom: 40px;     
+}
+
+.actions {
+    margin-top: 350px;
+}

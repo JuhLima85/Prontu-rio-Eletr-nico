@@ -1,13 +1,12 @@
 package com.codedeving.atendimentosapi.infrastructure.controllers;
 
 import com.codedeving.atendimentosapi.core.domain.Paciente;
-import com.codedeving.atendimentosapi.core.usecases.*;
+import com.codedeving.atendimentosapi.core.usecases.paciente.*;
 import com.codedeving.atendimentosapi.infrastructure.converters.PacienteDtoMapper;
 import com.codedeving.atendimentosapi.infrastructure.dtos.PacienteDto;
 import jakarta.servlet.http.Part;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -43,7 +42,7 @@ public class PacienteController {
     @GetMapping
     public Page<PacienteDto> obtainAll(@RequestParam(value = "page", defaultValue = "0") Integer pagina,
                                        @RequestParam(value = "size", defaultValue = "10") Integer tamanhoPagina) {
-        PageRequest pageRequest = PageRequest.of(pagina, tamanhoPagina);
+        //PageRequest pageRequest = PageRequest.of(pagina, tamanhoPagina);
         return getAllPacienteUseCase.execute(pagina, tamanhoPagina)
                 .map(pacienteDtoMapper::toDTO);
     }
@@ -55,7 +54,6 @@ public class PacienteController {
 
     @PutMapping("{id}")
     public PacienteDto updatePaciente(@PathVariable Integer id, @RequestBody PacienteDto pacienteDto){
-        System.out.println("Paciente: " + pacienteDto);
         Paciente paciente = updatePacienteUseCase.execute(id, pacienteDtoMapper.toDomain(pacienteDto));
         return pacienteDtoMapper.toDTO(paciente);
     }

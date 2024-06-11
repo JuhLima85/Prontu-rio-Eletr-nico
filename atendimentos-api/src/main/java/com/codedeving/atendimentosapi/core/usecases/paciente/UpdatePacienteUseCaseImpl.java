@@ -1,4 +1,4 @@
-package com.codedeving.atendimentosapi.core.usecases;
+package com.codedeving.atendimentosapi.core.usecases.paciente;
 
 import com.codedeving.atendimentosapi.core.domain.Paciente;
 
@@ -15,9 +15,9 @@ public class UpdatePacienteUseCaseImpl implements UpdatePacienteUseCase {
 
     @Override
     public Paciente execute(Integer id, Paciente paciente) {
-        if(paciente.nome() == null || paciente.nome().isEmpty()){
+        if(paciente.getNome() == null || paciente.getNome().isEmpty()){
             throw new PacienteNotFoundException("O campo 'Nome' é obrigatório.");
-        } else if (paciente.email() == null || paciente.email().isEmpty()){
+        } else if (paciente.getEmail() == null || paciente.getEmail().isEmpty()){
             throw new PacienteNotFoundException("O campo 'E-mail' é obrigatório.");
         }
         return pacienteGateway.updatePaciente(id, paciente);

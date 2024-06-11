@@ -21,7 +21,7 @@ export class CadastrarListarPaciente implements OnInit{
   
   formulario: FormGroup = new FormGroup({});
   pacientes: Paciente[] = [];
-  colunas = ['id','foto', 'nome', 'cpf', 'idade', 'email', 'favorito', 'excluir', 'editar']
+  colunas = ['id','foto', 'nome', 'cpf', 'idade', 'email', 'atendimento', 'excluir', 'editar']
   imagem: string | ArrayBuffer | null = null;
 
   totalElementos = 0;
@@ -46,6 +46,8 @@ export class CadastrarListarPaciente implements OnInit{
   montarFormulario(){
     this.formulario = this.fb.group({
       nome: ['', Validators.required],
+      cpf: ['', Validators.required], 
+      idade: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]]
     })
   } 
@@ -116,6 +118,10 @@ export class CadastrarListarPaciente implements OnInit{
   
   editarPaciente(paciente: Paciente) {        
     this.router.navigate(['/editar-paciente', paciente.id]);
+  }
+
+  criarAtendimento(paciente: Paciente){
+    this.router.navigate(['/criar-atendimento', paciente.id]);
   }
 
 }

@@ -1,0 +1,58 @@
+ 
+  .full-width {
+      width: 100%;
+  }
+  
+  .toolbar {    
+      margin-bottom: 18px
+    }
+    
+    .flex-spacer {
+      flex: 1;
+    }
+  
+  .half-width {
+      width: 100%;
+  }
+  
+  .button-margin {
+      margin: 0 12px;
+      margin-right: 8px; 
+  }
+  
+  .margin{
+    margin-right: 20px; 
+  }
+  
+  .small-font {
+    font-size: 0.95rem; 
+  }
+  
+  .toolbar-spacing {
+    margin-bottom: 16px; 
+  }
+  
+  .toolbar-margin-top {
+    margin-top: 20px; 
+    
+  }
+  
+  .fixed {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  .link-style {
+    text-decoration: none; 
+    color: inherit; 
+  }
+
+  .larger-textarea {
+    height: 400px !important; /* Garantir que o estilo seja aplicado */
+    width: 100%; /* Aumenta horizontalmente para ocupar toda a largura disponível */
+    box-sizing: border-box; /* Garantir que o padding e border sejam incluídos na largura e altura */
+}
+  
+  

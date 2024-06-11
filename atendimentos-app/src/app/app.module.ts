@@ -13,6 +13,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule} from '@angular/material/dialog'
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,13 +22,19 @@ import { CadastrarListarPaciente } from './paciente/cadastrar-listar-paciente/ca
 import { PacienteService } from '../service/paciente.service';
 import { PacienteDetalheComponent } from './paciente/paciente-detalhe/paciente-detalhe.component';
 import { EditarPacienteComponent } from './paciente/editar-paciente/editar-paciente.component';
+import { CadastrarListarAtendimentoComponent } from './atendimento/cadastrar-listar-atendimento/cadastrar-listar-atendimento.component';
+import { EditarAtendimentoComponent } from './atendimento/editar-atendimento/editar-atendimento.component';
+import { DetalhesAtendimentoComponent } from './atendimento/detalhes-atendimento/detalhes-atendimento.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CadastrarListarPaciente,
     PacienteDetalheComponent,
-    EditarPacienteComponent
+    EditarPacienteComponent,
+    CadastrarListarAtendimentoComponent,
+    EditarAtendimentoComponent,
+    DetalhesAtendimentoComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +51,7 @@ import { EditarPacienteComponent } from './paciente/editar-paciente/editar-pacie
     MatDialogModule,
     MatPaginatorModule,
     MatSnackBarModule,
+    MatSelectModule,
     BrowserAnimationsModule
   ],
   providers: [

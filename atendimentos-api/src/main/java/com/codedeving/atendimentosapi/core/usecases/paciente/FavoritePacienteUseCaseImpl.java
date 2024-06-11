@@ -1,4 +1,4 @@
-package com.codedeving.atendimentosapi.core.usecases;
+package com.codedeving.atendimentosapi.core.usecases.paciente;
 
 import com.codedeving.atendimentosapi.core.gateways.PacienteGateway;
 

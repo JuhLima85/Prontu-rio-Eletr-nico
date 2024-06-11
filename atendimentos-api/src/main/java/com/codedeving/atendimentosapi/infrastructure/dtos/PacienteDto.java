@@ -6,5 +6,4 @@ public record PacienteDto(Integer id,
                           String idade,
                           String email,
                           Boolean favorito,
-                          byte[] foto) {
-}
+                          byte[] foto) {}

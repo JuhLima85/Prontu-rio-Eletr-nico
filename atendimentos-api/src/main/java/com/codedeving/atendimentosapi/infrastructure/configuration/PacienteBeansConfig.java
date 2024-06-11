@@ -1,12 +1,12 @@
 package com.codedeving.atendimentosapi.infrastructure.configuration;
 
 import com.codedeving.atendimentosapi.core.gateways.PacienteGateway;
-import com.codedeving.atendimentosapi.core.usecases.*;
+import com.codedeving.atendimentosapi.core.usecases.paciente.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class BeansConfig {
+public class PacienteBeansConfig {
 
     @Bean
     public CreatePacienteUseCase createContatoUseCase(PacienteGateway pacienteGateway){

@@ -4,19 +4,19 @@ import com.codedeving.atendimentosapi.core.domain.Paciente;
 import jakarta.servlet.http.Part;
 import org.springframework.data.domain.Page;
 
+import java.util.Optional;
+
 public interface PacienteGateway {
 
     Paciente createPaciente(Paciente paciente);
 
-    Paciente findByEmail(String email);
+    Optional<Paciente> findByCpf(String cpf);
 
     void deletePaciente(Integer id);
 
-    //List<Contato> obtainAllContatos();
-
     Page<Paciente> obtainAllPacientes(Integer pagina, Integer tamanhoPagina);
 
-   Paciente obterPacientePorId(Integer id);
+   Optional<Paciente> findById(Integer id);
 
     void favoritePaciente(Integer id);
 

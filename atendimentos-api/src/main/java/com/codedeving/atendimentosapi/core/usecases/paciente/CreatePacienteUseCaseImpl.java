@@ -1,4 +1,4 @@
-package com.codedeving.atendimentosapi.core.usecases;
+package com.codedeving.atendimentosapi.core.usecases.paciente;
 
 import com.codedeving.atendimentosapi.core.domain.Paciente;
 import com.codedeving.atendimentosapi.core.exceptions.PacienteExistingException;
@@ -11,13 +11,13 @@ public class CreatePacienteUseCaseImpl implements CreatePacienteUseCase {
     public CreatePacienteUseCaseImpl(PacienteGateway pacienteGateway) {
         this.pacienteGateway = pacienteGateway;
     }
-
     @Override
     public Paciente execute(Paciente paciente) {
-        Paciente pacienteExistente = pacienteGateway.findByEmail(paciente.email());
-        if(pacienteExistente != null){
-            throw new PacienteExistingException("Já existe um paciente com e-mail '" + paciente.email() + "' cadastrado!");
-        }
+        pacienteGateway.findByCpf(paciente.getCpf())
+                .ifPresent(existingPaciente -> {
+                    throw new PacienteExistingException("Já existe um paciente com CPF '" + paciente.getCpf() + "' cadastrado!");
+                });
         return pacienteGateway.createPaciente(paciente);
     }
+
 }
