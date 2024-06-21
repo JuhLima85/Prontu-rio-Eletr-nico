@@ -9,9 +9,15 @@ public class Atendimento {
     private LocalDate dataAtendimento;
     private String nomeProfissional;
     private EspecialidadeEnum especialidadeEnum;
+
+    //private StringBuilder registroAtendimento;
     private String registroAtendimento;
     private LocalDate retorno;
     private Paciente paciente;
+
+    public Atendimento() {
+
+    }
 
     public Atendimento(Integer id, LocalDate dataAtendimento, String nomeProfissional, EspecialidadeEnum especialidadeEnum, String registroAtendimento, LocalDate retorno, Paciente paciente) {
         this.id = id;
@@ -21,6 +27,15 @@ public class Atendimento {
         this.registroAtendimento = registroAtendimento;
         this.retorno = retorno;
         this.paciente = paciente;
+    }
+
+    public Atendimento(Integer id, LocalDate dataAtendimento, String nomeProfissional, EspecialidadeEnum especialidadeEnum, String registroAtendimento, LocalDate retorno) {
+        this.id = id;
+        this.dataAtendimento = dataAtendimento;
+        this.nomeProfissional = nomeProfissional;
+        this.especialidadeEnum = especialidadeEnum;
+        this.registroAtendimento = registroAtendimento;
+        this.retorno = retorno;
     }
 
     public Integer getId() {
@@ -79,4 +94,17 @@ public class Atendimento {
         this.paciente = paciente;
     }
 
+    @Override
+    public String toString() {
+        return "Atendimento{" +
+                "id=" + id +
+                ", dataAtendimento=" + dataAtendimento +
+                ", nomeProfissional='" + nomeProfissional + '\'' +
+                ", especialidadeEnum=" + especialidadeEnum +
+                ", registroAtendimento='" + registroAtendimento + '\'' +
+                ", retorno=" + retorno +
+                ", paciente=" + (paciente != null ? paciente.getId() : null) +
+                '}';
+    }
 }
+

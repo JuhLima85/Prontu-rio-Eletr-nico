@@ -45,8 +45,7 @@ export class CadastrarListarAtendimentoComponent implements OnInit {
     this.montarFormulario();    
     this.listarAtendimentos(this.pagina, this.tamanho);    
     this.pacienteService.getPacienteById(this.idPaciente).subscribe((paciente: Paciente) => {
-      this.paciente = paciente;
-      console.log("Paciente: " + JSON.stringify(paciente));
+      this.paciente = paciente;         
     });
   }
 
@@ -68,10 +67,7 @@ export class CadastrarListarAtendimentoComponent implements OnInit {
   }    
 
 submit() {  
-  const formValues = this.formulario.value;
-
-  // Remova o campo 'id' de formValues se você não o estiver usando
-  delete formValues.id;
+  const formValues = this.formulario.value;  
 
   this.service.save(this.idPaciente, formValues).subscribe(
     (resposta: Atendimento) => {
@@ -105,5 +101,4 @@ paginar(event: PageEvent){
 cancelarEdicao() {    
   this.router.navigate(['/']);
 }  
-
 }

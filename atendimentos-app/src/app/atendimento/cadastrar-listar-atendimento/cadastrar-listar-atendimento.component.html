@@ -3,12 +3,20 @@
     <a routerLink="/" class="link-style">Prontuário Eletrônico</a>     
 </mat-toolbar>
 
-<mat-toolbar class="toolbar-spacing"> 
+<mat-toolbar class="toolbar-spacing">
     <span class="flex-spacer"></span>
-    <mat-icon>person</mat-icon>     
-    <span class="small-font">{{ paciente?.nome }}</span>
+    <div class="paciente-info" *ngIf="paciente">
+      <div class="paciente-foto" *ngIf="paciente.foto">
+        <img width="100" height="100" src="data:image/png;base64,{{ paciente.foto }}" />
+      </div>
+      <div class="paciente-nome">
+        <span class="small-font">{{ paciente.nome }}</span>
+      </div>
+      <div class="paciente-id">
+        <span class="small-font">CPF: {{ paciente.id }}</span>
+      </div>
+    </div>
     <span class="flex-spacer"></span>
-    <span class="small-font">Nº de Registro {{ paciente?.id }} </span>
 </mat-toolbar>
 
 <div class="container">

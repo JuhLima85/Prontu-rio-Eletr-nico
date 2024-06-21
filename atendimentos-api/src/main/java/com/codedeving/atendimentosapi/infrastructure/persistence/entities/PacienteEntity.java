@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,4 +24,7 @@ public class PacienteEntity {
     private Boolean favorito;
     @Column(columnDefinition = "LONGBLOB", length = 16777215)
     private byte[] foto;
+
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<AtendimentoEntity> atendimentos;
 }

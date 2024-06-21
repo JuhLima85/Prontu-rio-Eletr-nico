@@ -1,5 +1,8 @@
 package com.codedeving.atendimentosapi.core.domain;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Paciente {
     private Integer id;
     private String nome;
@@ -8,6 +11,25 @@ public class Paciente {
     private String email;
     private Boolean favorito;
     private byte[] foto;
+    private List<Atendimento> atendimentos;
+
+    public Paciente() {
+
+    }
+
+    public Paciente(Integer id) {
+        this.id = id;
+    }
+    public Paciente(Integer id, String nome, String cpf, String idade, String email, Boolean favorito, byte[] foto, List<Atendimento> atendimentos) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.idade = idade;
+        this.email = email;
+        this.favorito = favorito;
+        this.foto = foto;
+        this.atendimentos = atendimentos;
+    }
 
     public Paciente(Integer id, String nome, String cpf, String idade, String email, Boolean favorito, byte[] foto) {
         this.id = id;
@@ -75,4 +97,25 @@ public class Paciente {
         this.foto = foto;
     }
 
+    public List<Atendimento> getAtendimentos() {
+        return atendimentos;
+    }
+
+    public void setAtendimentos(List<Atendimento> atendimentos) {
+        this.atendimentos = atendimentos;
+    }
+
+    @Override
+    public String toString() {
+        return "Paciente{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", idade='" + idade + '\'' +
+                ", email='" + email + '\'' +
+                ", favorito=" + favorito +
+                ", foto=" + Arrays.toString(foto) +
+                ", atendimentos=" + atendimentos +
+                '}';
+    }
 }

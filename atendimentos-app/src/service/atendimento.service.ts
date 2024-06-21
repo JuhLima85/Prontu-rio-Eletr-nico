@@ -18,11 +18,8 @@ export class AtendimentoService {
     private http: HttpClient
   ) { }
 
-  /*save(pacienteid: number, atendimento: Atendimento) : Observable<Atendimento>{
-    return this.http.post<Atendimento>(`${this.apiUrl}/${pacienteid}`, atendimento);
-  }*/
-
   save(pacienteid: number, atendimento: Atendimento): Observable<Atendimento> {
+    console.log('JSON enviado para a API:', atendimento);
     return this.http.post<Atendimento>(`${this.apiUrl}/${pacienteid}`, atendimento)
       .pipe(
         tap((response: Atendimento) => console.log('Retorno da API:', response))

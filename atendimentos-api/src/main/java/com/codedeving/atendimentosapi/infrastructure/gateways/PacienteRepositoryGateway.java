@@ -2,8 +2,9 @@ package com.codedeving.atendimentosapi.infrastructure.gateways;
 
 import com.codedeving.atendimentosapi.core.domain.Paciente;
 import com.codedeving.atendimentosapi.core.gateways.PacienteGateway;
-import com.codedeving.atendimentosapi.infrastructure.converters.PacienteEntityMapper;
+//import com.codedeving.atendimentosapi.infrastructure.converters.PacienteEntityMapper;
 import com.codedeving.atendimentosapi.core.exceptions.PacienteNotFoundException;
+import com.codedeving.atendimentosapi.infrastructure.converters.EntityMapperImpl;
 import com.codedeving.atendimentosapi.infrastructure.persistence.entities.PacienteEntity;
 import com.codedeving.atendimentosapi.infrastructure.persistence.repository.PacienteRepository;
 import jakarta.servlet.http.Part;
@@ -23,18 +24,20 @@ import java.util.Optional;
 public class PacienteRepositoryGateway implements PacienteGateway {
 
     private final PacienteRepository pacienteRepository;
-    private final PacienteEntityMapper entityMapper;
+    private final EntityMapperImpl mapper;
+
+    //private final PacienteEntityMapper entityMapper;
 
     @Override
     public Paciente createPaciente(Paciente paciente) {
-        PacienteEntity entity = entityMapper.toEntity(paciente);
+        PacienteEntity entity = mapper.toPacienteEntity(paciente);
         PacienteEntity novoPaciente = pacienteRepository.save(entity);
-        return entityMapper.toPaciente(novoPaciente);
+        return mapper.toPacienteDomain(novoPaciente);
     }
 
     @Override
     public Optional<Paciente> findByCpf(String cpf) {
-        return pacienteRepository.findByCpf(cpf).map(entityMapper::toPaciente);
+        return pacienteRepository.findByCpf(cpf).map(mapper::toPacienteDomain);
     }
 
     @Override
@@ -48,13 +51,13 @@ public class PacienteRepositoryGateway implements PacienteGateway {
         PageRequest pageRequest = PageRequest.of(pagina, tamanhoPagina, sort);
         return pacienteRepository
                 .findAll(pageRequest)
-                .map(entityMapper::toPaciente);
+                .map(mapper::toPacienteDomain);
     }
 
     @Override
     public  Optional<Paciente> findById(Integer id) {
         return pacienteRepository.findById(id)
-                .map(entityMapper::toPaciente);
+                .map(mapper::toPacienteDomain);
     }
 
     @Override
@@ -69,7 +72,7 @@ public class PacienteRepositoryGateway implements PacienteGateway {
 
     @Override
     public Paciente updatePaciente(Integer id, Paciente paciente) {
-        PacienteEntity entity = entityMapper.toEntity(paciente);
+        PacienteEntity entity = mapper.toPacienteEntity(paciente);
 
         PacienteEntity existingEntity = pacienteRepository.findById(id)
                 .orElseThrow(() -> new PacienteNotFoundException("Paciente não encontrado"));
@@ -79,13 +82,13 @@ public class PacienteRepositoryGateway implements PacienteGateway {
         existingEntity.setFavorito(entity.getFavorito());
 
         PacienteEntity pacienteUpdate = pacienteRepository.save(existingEntity);
-        return entityMapper.toPaciente(pacienteUpdate);
+        return mapper.toPacienteDomain(pacienteUpdate);
     }
 
     @Override
     public byte[] addPhoto(Integer id, Part arquivo) {
         Optional<PacienteEntity> pacienteEntity = pacienteRepository.findById(id);
-       return pacienteEntity.map( c -> {
+        return pacienteEntity.map( c -> {
             try{
                 InputStream is = arquivo.getInputStream();
                 byte[] bytes = new byte[(int) arquivo.getSize()];

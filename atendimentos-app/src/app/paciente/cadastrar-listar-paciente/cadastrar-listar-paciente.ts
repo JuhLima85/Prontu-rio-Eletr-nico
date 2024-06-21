@@ -90,11 +90,11 @@ export class CadastrarListarPaciente implements OnInit{
     }
   }  
 
-  vizualizarPaciente(paciente: Paciente) {
+  vizualizarPaciente(foto: string) {
     this.dialog.open( PacienteDetalheComponent, {
       width: '500px',
       height: '550px',
-      data: paciente
+      data: foto
     })
   }
 

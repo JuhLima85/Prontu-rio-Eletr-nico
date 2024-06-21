@@ -1,4 +1,8 @@
 package com.codedeving.atendimentosapi.infrastructure.dtos;
+import com.codedeving.atendimentosapi.core.domain.Atendimento;
+
+
+import java.util.List;
 
 public record PacienteDto(Integer id,
                           String nome,
@@ -6,4 +10,7 @@ public record PacienteDto(Integer id,
                           String idade,
                           String email,
                           Boolean favorito,
-                          byte[] foto) {}
+                          byte[] foto,
+                          List<Atendimento> atendimentos) {}
+
+

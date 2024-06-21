@@ -8,7 +8,8 @@ import java.util.Optional;
 
 public interface AtendimentoGateway {
 
-    Atendimento createAtendimento(Integer pacienteId, Atendimento atendimento);
+   Atendimento createAtendimento(Integer pacienteId, Atendimento atendimento);
+    //Atendimento createAtendimento(Atendimento atendimento);
 
     void deleteAtendimento(Integer id);
 

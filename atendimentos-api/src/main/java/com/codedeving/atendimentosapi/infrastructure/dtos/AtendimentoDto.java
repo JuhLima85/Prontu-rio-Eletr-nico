@@ -11,7 +11,9 @@ public record AtendimentoDto(Integer id,
                             LocalDate dataAtendimento,
                             String nomeProfissional,
                             EspecialidadeEnum especialidadeEnum,
-                            String registroAtendimento,
+                             //StringBuilder registroAtendimento,
+
+                             String registroAtendimento,
                              @JsonDeserialize(using = LocalDateDeserializer.class)
                             LocalDate retorno,
-                            Paciente paciente) {}
+                            Integer pacienteId) {}

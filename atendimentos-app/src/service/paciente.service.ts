@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { Paciente } from '../domain/paciente';
 
 import { environment } from '../environments/environment';
@@ -44,8 +45,15 @@ export class PacienteService {
     return this.http.delete(`${this.url}/${paciente.id}`);
   }
   
-  getPacienteById(id: number): Observable<Paciente> {
+  /*getPacienteById(id: number): Observable<Paciente> {
     return this.http.get<Paciente>(`${this.url}/${id}`);
+  }*/
+
+  getPacienteById(id: number): Observable<Paciente> {
+    console.log(`Buscando paciente com ID: ${id}`);
+    return this.http.get<Paciente>(`${this.url}/${id}`).pipe(
+      tap(paciente => console.log(`Paciente buscado: ${JSON.stringify(paciente)}`))
+    );
   }
   
   updatePaciente(paciente: Paciente): Observable<any> {
