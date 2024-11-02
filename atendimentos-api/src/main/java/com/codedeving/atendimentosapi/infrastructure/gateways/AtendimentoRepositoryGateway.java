@@ -1,8 +1,8 @@
 package com.codedeving.atendimentosapi.infrastructure.gateways;
 
 import com.codedeving.atendimentosapi.core.domain.Atendimento;
+import com.codedeving.atendimentosapi.core.exceptions.AtendimentoNotFoundException;
 import com.codedeving.atendimentosapi.core.gateways.AtendimentoGateway;
-//import com.codedeving.atendimentosapi.infrastructure.converters.AtendimentoEntityMapper;
 import com.codedeving.atendimentosapi.infrastructure.converters.EntityMapperImpl;
 import com.codedeving.atendimentosapi.infrastructure.persistence.entities.AtendimentoEntity;
 import com.codedeving.atendimentosapi.infrastructure.persistence.entities.PacienteEntity;
@@ -14,9 +14,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
-
 
 @Component
 @RequiredArgsConstructor
@@ -33,8 +33,6 @@ public class AtendimentoRepositoryGateway implements AtendimentoGateway {
         AtendimentoEntity atendimentoEntity = mapper.toAtendimentoEntity(atendimento);
         atendimentoEntity.setPaciente(pacienteEntity);
         AtendimentoEntity novoAtendimentoEntity  = atendimentoRepository.save(atendimentoEntity);
-        System.out.println("AtendimentoRepositoryGateway ====>" + novoAtendimentoEntity);
-        //até aqui o id do paciente tá presentação
         return mapper.toAtendimentoDomain(novoAtendimentoEntity);
     }
 
@@ -56,14 +54,25 @@ public class AtendimentoRepositoryGateway implements AtendimentoGateway {
 
     @Override
     public Atendimento updateAtendimento(Integer id, Atendimento atendimento) {
+        System.out.println("AtendimentoRepositoryGateway - update: " + atendimento);
         AtendimentoEntity atendimentoEntity = mapper.toAtendimentoEntity(atendimento);
         AtendimentoEntity updatedEntity  = atendimentoRepository.save(atendimentoEntity);
         return mapper.toAtendimentoDomain(updatedEntity );
     }
 
+    @Transactional
     @Override
     public void deleteAtendimento(Integer id) {
-        atendimentoRepository.deleteById(id);
-    }
+        AtendimentoEntity atendimento = atendimentoRepository.findById(id)
+                .orElseThrow(() -> new AtendimentoNotFoundException());
 
+        // Remover atendimento da lista de atendimentos do paciente
+        if (atendimento.getPaciente() != null) {
+            atendimento.getPaciente().getAtendimentos().remove(atendimento);
+        }
+
+        // Agora excluir o atendimento
+        atendimentoRepository.deleteById(id);
+        atendimentoRepository.flush();
+    }
 }

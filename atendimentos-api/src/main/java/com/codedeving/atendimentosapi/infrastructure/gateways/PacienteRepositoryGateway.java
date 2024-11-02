@@ -1,10 +1,12 @@
 package com.codedeving.atendimentosapi.infrastructure.gateways;
 
+import com.codedeving.atendimentosapi.core.domain.Atendimento;
 import com.codedeving.atendimentosapi.core.domain.Paciente;
 import com.codedeving.atendimentosapi.core.gateways.PacienteGateway;
 //import com.codedeving.atendimentosapi.infrastructure.converters.PacienteEntityMapper;
 import com.codedeving.atendimentosapi.core.exceptions.PacienteNotFoundException;
 import com.codedeving.atendimentosapi.infrastructure.converters.EntityMapperImpl;
+import com.codedeving.atendimentosapi.infrastructure.persistence.entities.AtendimentoEntity;
 import com.codedeving.atendimentosapi.infrastructure.persistence.entities.PacienteEntity;
 import com.codedeving.atendimentosapi.infrastructure.persistence.repository.PacienteRepository;
 import jakarta.servlet.http.Part;
@@ -25,8 +27,6 @@ public class PacienteRepositoryGateway implements PacienteGateway {
 
     private final PacienteRepository pacienteRepository;
     private final EntityMapperImpl mapper;
-
-    //private final PacienteEntityMapper entityMapper;
 
     @Override
     public Paciente createPaciente(Paciente paciente) {

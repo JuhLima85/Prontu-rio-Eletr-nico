@@ -2,7 +2,6 @@ package com.codedeving.atendimentosapi.infrastructure.controllers;
 
 import com.codedeving.atendimentosapi.core.domain.Paciente;
 import com.codedeving.atendimentosapi.core.usecases.paciente.*;
-//import com.codedeving.atendimentosapi.infrastructure.converters.PacienteDtoMapper;
 import com.codedeving.atendimentosapi.infrastructure.converters.DtoMapperImpl;
 import com.codedeving.atendimentosapi.infrastructure.dtos.PacienteDto;
 import jakarta.servlet.http.Part;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 public class PacienteController {
 
     private final CreatePacienteUseCase createPacienteUseCase;
-    //private final PacienteDtoMapper pacienteDtoMapper;
     private final DtoMapperImpl dtoToDomain;
     private final DeletePacienteUseCase deletePacienteUseCase;
     private final GetAllPacienteUseCase getAllPacienteUseCase;
@@ -42,14 +40,6 @@ public class PacienteController {
         return dtoToDomain.toPacienteDto(paciente);
     }
 
-//    @GetMapping("/{id}")
-//    public PacienteDto buscarPaciente(@PathVariable Integer id){
-//        Paciente paciente = getPacienteByIdUseCase.execute(id);
-//        System.out.println("CONTROLLER PACIENTE :: PACIENTE RETORNO getPacienteByIdUseCase.execute------>" + paciente + " ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-//        PacienteDto pcTDO = pacienteDtoMapper.toDTO(paciente);
-//        System.out.println("CONTROLLER PACIENTE :: RETORNO pacienteDtoMapper.toDTO------>" + pcTDO + " ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-//        return pcTDO;
-//    }
     @GetMapping
     public Page<PacienteDto> obtainAll(@RequestParam(value = "page", defaultValue = "0") Integer pagina,
                                        @RequestParam(value = "size", defaultValue = "10") Integer tamanhoPagina) {

@@ -15,6 +15,8 @@ public class DeleteAtendimentoUseCaseImpl implements DeleteAtendimentoUseCase {
     public void execute(Integer id) {
         Atendimento atendimento = atendimentoGateway.findById(id)
                 .orElseThrow(() -> new AtendimentoNotFoundException());
+
+        System.out.println(atendimento);
         atendimentoGateway.deleteAtendimento(id);
     }
 

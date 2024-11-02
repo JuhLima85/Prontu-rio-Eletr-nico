@@ -17,6 +17,5 @@ public class GetAllPacienteUseCaseImpl implements GetAllPacienteUseCase {
     public Page<Paciente> execute(Integer pagina, Integer tamanhoPagina) {
         return pacienteGateway.obtainAllPacientes(pagina, tamanhoPagina);
     }
-
 }
 

@@ -7,7 +7,6 @@ import com.codedeving.atendimentosapi.infrastructure.dtos.PacienteDto;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class DtoMapperImpl implements DtoMapper {
@@ -32,6 +31,8 @@ public class DtoMapperImpl implements DtoMapper {
 
     @Override
     public Atendimento toAtendimentoDomain(AtendimentoDto dto) {
+        Paciente paciente = dto.pacienteId() != null ? new Paciente(dto.pacienteId()) : null;
+
         return new Atendimento(
                 dto.id(),
                 dto.dataAtendimento(),
@@ -39,17 +40,14 @@ public class DtoMapperImpl implements DtoMapper {
                 dto.especialidadeEnum(),
                 dto.registroAtendimento(),
                 dto.retorno(),
-                new Paciente((dto.pacienteId()))
+                paciente
         );
     }
 
     @Override
     public PacienteDto toPacienteDto(Paciente paciente) {
+        System.out.println("Classe DtoMapperImpl - Méetodo toPacienteDto - Parâmentro paciente: " + paciente);
         List<Atendimento> atendimentos = paciente.getAtendimentos();
-
-//        List<AtendimentoDto> atendimentosDto = paciente.getAtendimentos().stream()
-//                .map(this::toAtendimentoDto)
-//                .collect(Collectors.toList());
 
         return new PacienteDto(
                 paciente.getId(),
@@ -63,56 +61,20 @@ public class DtoMapperImpl implements DtoMapper {
         );
     }
 
-//    @Override
-//    public AtendimentoDto toAtendimentoDto(Atendimento atendimento) {
-//        return new AtendimentoDto(
-//                atendimento.getId(),
-//                atendimento.getDataAtendimento(),
-//                atendimento.getNomeProfissional(),
-//                atendimento.getEspecialidade(),
-//                atendimento.getRegistroAtendimento(),
-//                atendimento.getRetorno(),
-//                atendimento.getPaciente().getId()
-//        );
-//    }
+    @Override
+    public AtendimentoDto toAtendimentoDto(Atendimento atendimento) {
+        System.out.println("Classe DtoMapperImpl método toAtendimentoDto. Parâmetro atendimento: " + atendimento);
+        Paciente paciente = atendimento.getPaciente();
+        Integer pacienteId = paciente != null ? paciente.getId() : null;
 
-//    @Override
-//    public AtendimentoDto toAtendimentoDto(Atendimento atendimento) {
-//        System.out.println("DtoMapperImpl entrada =======> " + atendimento);
-//        Paciente paciente = atendimento.getPaciente();
-//        Integer pacienteId = paciente != null ? paciente.getId() : null;
-//
-//        return new AtendimentoDto(
-//                atendimento.getId(),
-//                atendimento.getDataAtendimento(),
-//                atendimento.getNomeProfissional(),
-//                atendimento.getEspecialidade(),
-//                atendimento.getRegistroAtendimento(),
-//                atendimento.getRetorno(),
-//                pacienteId
-//        );
-//    }
-@Override
-public AtendimentoDto toAtendimentoDto(Atendimento atendimento) {
-    System.out.println("DtoMapperImpl entrada =======> " + atendimento);
-
-    Paciente paciente = atendimento.getPaciente();
-    Integer pacienteId = paciente != null ? paciente.getId() : null;
-
-    AtendimentoDto atendimentoDto = new AtendimentoDto(
-            atendimento.getId(),
-            atendimento.getDataAtendimento(),
-            atendimento.getNomeProfissional(),
-            atendimento.getEspecialidade(),
-            atendimento.getRegistroAtendimento(),
-            atendimento.getRetorno(),
-            pacienteId
-    );
-
-    System.out.println("DtoMapperImpl saída =======> " + atendimentoDto);
-
-    return atendimentoDto;
-}
-
-
+        return new AtendimentoDto(
+                atendimento.getId(),
+                atendimento.getDataAtendimento(),
+                atendimento.getNomeProfissional(),
+                atendimento.getEspecialidade(),
+                atendimento.getRegistroAtendimento(),
+                atendimento.getRetorno(),
+                pacienteId
+        );
+    }
 }

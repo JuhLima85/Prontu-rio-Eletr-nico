@@ -36,18 +36,10 @@ public class AtendimentoController {
                 .map(mapper::toAtendimentoDto);
     }
 
-//    @GetMapping("/{id}")
-//    public AtendimentoDto buscarAtendimento(@PathVariable Integer id) {
-//        Atendimento atendimento = getAtendimentoByIdUseCase.execute(id);
-//        return atendimentoDtoMapper.toDTO(atendimento);
-//    }
-
     @GetMapping("/{id}")
     public AtendimentoDto buscarAtendimento(@PathVariable Integer id) {
         Atendimento atendimento = getAtendimentoByIdUseCase.execute(id);
-        AtendimentoDto atendimentoDto =  mapper.toAtendimentoDto(atendimento);
-        System.out.println("CONTROLLER ATENDIMENTO------>" + atendimentoDto);
-        return atendimentoDto;
+        return mapper.toAtendimentoDto(atendimento);
     }
 
     @DeleteMapping("/{id}")
@@ -55,9 +47,18 @@ public class AtendimentoController {
         deleteAtendimentoUseCase.execute(id);
     }
 
+//    @PutMapping("/{id}")
+//    public AtendimentoDto updateAtendimento(@PathVariable Integer id, @RequestBody AtendimentoDto atendimentoDto) {
+//        Atendimento atualizado = updateAtendimentoUseCase.execute(id, mapper.toAtendimentoDomain(atendimentoDto));
+//        return mapper.toAtendimentoDto(atualizado);
+//    }
+
     @PutMapping("/{id}")
     public AtendimentoDto updateAtendimento(@PathVariable Integer id, @RequestBody AtendimentoDto atendimentoDto) {
+        System.out.println("AtendimentoController - update - Atendimento View: " + atendimentoDto);
         Atendimento atualizado = updateAtendimentoUseCase.execute(id, mapper.toAtendimentoDomain(atendimentoDto));
-        return mapper.toAtendimentoDto(atualizado);
+        System.out.println("AtendimentoController - update - Retorno do UseCase: " + atualizado);
+        AtendimentoDto at=  mapper.toAtendimentoDto(atualizado);
+        return at;
     }
 }

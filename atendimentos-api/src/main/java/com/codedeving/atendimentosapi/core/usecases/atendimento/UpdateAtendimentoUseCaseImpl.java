@@ -25,6 +25,10 @@ public class UpdateAtendimentoUseCaseImpl implements UpdateAtendimentoUseCase {
         existingAtendimento.setEspecialidade(atendimento.getEspecialidade());
         existingAtendimento.setRegistroAtendimento(atendimento.getRegistroAtendimento());
         existingAtendimento.setRetorno(atendimento.getRetorno());
+        existingAtendimento.setPaciente(atendimento.getPaciente());
+
+        System.out.println("Classe UpdateAtendimentoUseCaseImpl - ATENDIMENTO DA VIEW: " + atendimento);
+        System.out.println("Classe UpdateAtendimentoUseCaseImpl - ATEDIMENTO NO BD: " + existingAtendimento);
 
         return atendimentoGateway.updateAtendimento(id, existingAtendimento);
     }

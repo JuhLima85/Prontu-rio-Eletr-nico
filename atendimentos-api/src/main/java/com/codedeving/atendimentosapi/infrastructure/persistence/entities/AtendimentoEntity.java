@@ -18,7 +18,7 @@ public class AtendimentoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = true) // true para teste - depois retire ou deixe false pro campo não aceitar null
+    //@Column(name = "ID", nullable = true)
     private Integer id;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
@@ -34,7 +34,7 @@ public class AtendimentoEntity {
     private LocalDate retorno;
 
     @ManyToOne
-    @JoinColumn(name = "paciente_id", nullable = true)  //true PARA TESTE - depois retire ou deixe false pro campo não aceitar null (Não é o caso para essa api pois Isso significa que um AtendimentoEntity pode existir sem estar associado a um Paciente.)
+    @JoinColumn(name = "paciente_id", nullable = true)
     private PacienteEntity paciente;
 
     public AtendimentoEntity(Integer id, LocalDate dataAtendimento, String nomeProfissional, EspecialidadeEnum especialidadeEnum, String registroAtendimento, LocalDate retorno) {
