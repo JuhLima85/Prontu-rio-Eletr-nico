@@ -46,7 +46,6 @@ public class DtoMapperImpl implements DtoMapper {
 
     @Override
     public PacienteDto toPacienteDto(Paciente paciente) {
-        System.out.println("Classe DtoMapperImpl - Méetodo toPacienteDto - Parâmentro paciente: " + paciente);
         List<Atendimento> atendimentos = paciente.getAtendimentos();
 
         return new PacienteDto(
@@ -63,7 +62,6 @@ public class DtoMapperImpl implements DtoMapper {
 
     @Override
     public AtendimentoDto toAtendimentoDto(Atendimento atendimento) {
-        System.out.println("Classe DtoMapperImpl método toAtendimentoDto. Parâmetro atendimento: " + atendimento);
         Paciente paciente = atendimento.getPaciente();
         Integer pacienteId = paciente != null ? paciente.getId() : null;
 
