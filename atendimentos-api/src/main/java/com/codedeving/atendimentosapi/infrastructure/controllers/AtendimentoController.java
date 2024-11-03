@@ -2,7 +2,6 @@ package com.codedeving.atendimentosapi.infrastructure.controllers;
 
 import com.codedeving.atendimentosapi.core.domain.Atendimento;
 import com.codedeving.atendimentosapi.core.usecases.atendimento.*;
-//import com.codedeving.atendimentosapi.infrastructure.converters.AtendimentoDtoMapper;
 import com.codedeving.atendimentosapi.infrastructure.converters.DtoMapper;
 import com.codedeving.atendimentosapi.infrastructure.dtos.AtendimentoDto;
 import lombok.AllArgsConstructor;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class AtendimentoController {
 
-    //private final AtendimentoDtoMapper atendimentoDtoMapper;
     private final DtoMapper mapper;
     private final CreateAtendimentoUseCase createAtendimentoUseCase;
     private final GetAllAtendimentosUseCase getAllAtendimentosUseCase;
@@ -37,28 +35,19 @@ public class AtendimentoController {
     }
 
     @GetMapping("/{id}")
-    public AtendimentoDto buscarAtendimento(@PathVariable Integer id) {
-        Atendimento atendimento = getAtendimentoByIdUseCase.execute(id);
+    public AtendimentoDto buscarAtendimento(@PathVariable Integer atendimentoID) {
+        Atendimento atendimento = getAtendimentoByIdUseCase.execute(atendimentoID);
         return mapper.toAtendimentoDto(atendimento);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteAtendimento(@PathVariable Integer id) {
-        deleteAtendimentoUseCase.execute(id);
+    public void deleteAtendimento(@PathVariable Integer atendimentoID) {
+        deleteAtendimentoUseCase.execute(atendimentoID);
     }
 
-//    @PutMapping("/{id}")
-//    public AtendimentoDto updateAtendimento(@PathVariable Integer id, @RequestBody AtendimentoDto atendimentoDto) {
-//        Atendimento atualizado = updateAtendimentoUseCase.execute(id, mapper.toAtendimentoDomain(atendimentoDto));
-//        return mapper.toAtendimentoDto(atualizado);
-//    }
-
     @PutMapping("/{id}")
-    public AtendimentoDto updateAtendimento(@PathVariable Integer id, @RequestBody AtendimentoDto atendimentoDto) {
-        System.out.println("AtendimentoController - update - Atendimento View: " + atendimentoDto);
-        Atendimento atualizado = updateAtendimentoUseCase.execute(id, mapper.toAtendimentoDomain(atendimentoDto));
-        System.out.println("AtendimentoController - update - Retorno do UseCase: " + atualizado);
-        AtendimentoDto at=  mapper.toAtendimentoDto(atualizado);
-        return at;
+    public AtendimentoDto updateAtendimento(@PathVariable Integer atendimentoID, @RequestBody AtendimentoDto atendimentoDto) {
+        Atendimento atualizado = updateAtendimentoUseCase.execute(atendimentoID, mapper.toAtendimentoDomain(atendimentoDto));
+        return mapper.toAtendimentoDto(atualizado);
     }
 }

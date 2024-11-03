@@ -52,9 +52,9 @@ public class AtendimentoRepositoryGateway implements AtendimentoGateway {
                 .map(mapper::toAtendimentoDomain);
     }
 
+    @Transactional
     @Override
     public Atendimento updateAtendimento(Integer id, Atendimento atendimento) {
-        System.out.println("AtendimentoRepositoryGateway - update: " + atendimento);
         AtendimentoEntity atendimentoEntity = mapper.toAtendimentoEntity(atendimento);
         AtendimentoEntity updatedEntity  = atendimentoRepository.save(atendimentoEntity);
         return mapper.toAtendimentoDomain(updatedEntity );
@@ -66,12 +66,10 @@ public class AtendimentoRepositoryGateway implements AtendimentoGateway {
         AtendimentoEntity atendimento = atendimentoRepository.findById(id)
                 .orElseThrow(() -> new AtendimentoNotFoundException());
 
-        // Remover atendimento da lista de atendimentos do paciente
         if (atendimento.getPaciente() != null) {
             atendimento.getPaciente().getAtendimentos().remove(atendimento);
         }
 
-        // Agora excluir o atendimento
         atendimentoRepository.deleteById(id);
         atendimentoRepository.flush();
     }

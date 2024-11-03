@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 @Component
 public class EntityMapperImpl implements EntityMapper {
 
-    // Converte um PacienteEntity para um Paciente (domínio)
     @Override
     public Paciente toPacienteDomain(PacienteEntity entity) {
         // Mapeia a lista de AtendimentoEntity para Atendimento (domínio)
@@ -32,7 +31,6 @@ public class EntityMapperImpl implements EntityMapper {
         );
     }
 
-    // Converte um Paciente (domínio) para um PacienteEntity
     @Override
     public PacienteEntity toPacienteEntity(Paciente domain) {
         // Mapeia a lista de Atendimento (domínio) para AtendimentoEntity
@@ -52,10 +50,23 @@ public class EntityMapperImpl implements EntityMapper {
         );
     }
 
+    @Override
+    public PacienteEntity toPacienteEntitySemAtendimento(Paciente domain) {
+        return new PacienteEntity(
+                domain.getId(),
+                domain.getNome(),
+                domain.getCpf(),
+                domain.getIdade(),
+                domain.getEmail(),
+                domain.getFavorito(),
+                domain.getFoto(),
+                null
+        );
+    }
+
     // Converte um AtendimentoEntity para um Atendimento (domínio)
     @Override
     public Atendimento toAtendimentoDomain(AtendimentoEntity entity) {
-        System.out.println("Classe EntityMapperImpl - toAtendimentoDomain: " + entity.getPaciente());
         Paciente paciente = partialToPacienteDomain(entity.getPaciente()); // Chamando método parcial para evitar recursão
 
         return new Atendimento(
@@ -69,9 +80,10 @@ public class EntityMapperImpl implements EntityMapper {
         );
     }
 
-    // Converte um Atendimento (domínio) para um AtendimentoEntity
     @Override
     public AtendimentoEntity toAtendimentoEntity(Atendimento domain) {
+        PacienteEntity pacienteEntity = toPacienteEntitySemAtendimento(domain.getPaciente());
+
         AtendimentoEntity entity = new AtendimentoEntity();
         entity.setId(domain.getId());
         entity.setDataAtendimento(domain.getDataAtendimento());
@@ -79,11 +91,10 @@ public class EntityMapperImpl implements EntityMapper {
         entity.setEspecialidadeEnum(domain.getEspecialidade());
         entity.setRegistroAtendimento(domain.getRegistroAtendimento());
         entity.setRetorno(domain.getRetorno());
-        // associar o paciente entidade se necessário
+        entity.setPaciente(pacienteEntity);
         return entity;
     }
 
-    // Método parcial para evitar recursão infinita ao converter AtendimentoEntity para Atendimento
     private Atendimento partialToAtendimentoDomain(AtendimentoEntity entity) {
         return new Atendimento(
                 entity.getId(),
@@ -96,9 +107,7 @@ public class EntityMapperImpl implements EntityMapper {
         );
     }
 
-    // Método parcial para evitar recursão infinita ao converter PacienteEntity para Paciente
     private Paciente partialToPacienteDomain(PacienteEntity entity) {
-        System.out.println("Classe EntityMapperImpl - partialToPacienteDomain - entity: " + entity);
         return new Paciente(
                 entity.getId(),
                 entity.getNome(),
@@ -111,7 +120,6 @@ public class EntityMapperImpl implements EntityMapper {
         );
     }
 
-    // Método parcial para evitar recursão infinita ao converter Atendimento para AtendimentoEntity
     private AtendimentoEntity partialToAtendimentoEntity(Atendimento domain) {
         AtendimentoEntity entity = new AtendimentoEntity();
         entity.setId(domain.getId());

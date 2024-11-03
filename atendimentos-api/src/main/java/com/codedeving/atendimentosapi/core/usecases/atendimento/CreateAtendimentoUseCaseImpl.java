@@ -21,17 +21,7 @@ public class CreateAtendimentoUseCaseImpl implements CreateAtendimentoUseCase{
         Paciente pacienteExistente = pacienteGateway.findById(pacienteId)
                 .orElseThrow(() -> new PacienteNotFoundException("Paciente com ID " + pacienteId + " não encontrado."));
 
-        atendimento.setPaciente(pacienteExistente); // Configura o paciente no atendimento
-        System.out.println("CreateAtendimentoUseCaseImpl =====>" + atendimento);
-        return atendimentoGateway.createAtendimento(pacienteId, atendimento); // Chama o método para persistir o atendimento
+        atendimento.setPaciente(pacienteExistente);
+        return atendimentoGateway.createAtendimento(pacienteId, atendimento);
     }
-
-
-//    @Override
-//    public Atendimento execute(Integer pacienteId, Atendimento atendimento) {
-//        Paciente pacienteExistente = pacienteGateway.findById(pacienteId)
-//                .orElseThrow(() -> new PacienteNotFoundException("Paciente com ID " + pacienteId + " não encontrado."));
-//        atendimento.setPaciente(pacienteExistente);
-//        return atendimentoGateway.createAtendimento(pacienteId, atendimento);
-//    }
 }

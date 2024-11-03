@@ -6,11 +6,9 @@ import com.codedeving.atendimentosapi.infrastructure.persistence.entities.Atendi
 import com.codedeving.atendimentosapi.infrastructure.persistence.entities.PacienteEntity;
 
 public interface EntityMapper {
-//    PacienteEntity toEntity(Paciente paciente);
-//    Paciente toPaciente(PacienteEntity entity);
     Paciente toPacienteDomain(PacienteEntity entity);
     PacienteEntity toPacienteEntity(Paciente domain);
+    PacienteEntity toPacienteEntitySemAtendimento(Paciente domain);
     Atendimento toAtendimentoDomain(AtendimentoEntity entity);
     AtendimentoEntity toAtendimentoEntity(Atendimento domain);
-
 }

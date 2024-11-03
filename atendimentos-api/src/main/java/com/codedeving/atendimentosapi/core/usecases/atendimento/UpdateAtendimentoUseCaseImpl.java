@@ -3,6 +3,7 @@ package com.codedeving.atendimentosapi.core.usecases.atendimento;
 import com.codedeving.atendimentosapi.core.domain.Atendimento;
 import com.codedeving.atendimentosapi.core.exceptions.AtendimentoNotFoundException;
 import com.codedeving.atendimentosapi.core.gateways.AtendimentoGateway;
+import jakarta.transaction.Transactional;
 
 import java.util.Optional;
 
@@ -14,23 +15,19 @@ public class UpdateAtendimentoUseCaseImpl implements UpdateAtendimentoUseCase {
     }
 
     @Override
-    public Atendimento execute(Integer id, Atendimento atendimento) {
+    public Atendimento execute(Integer atendimentoID, Atendimento atendimento) {
         validateAtendimento(atendimento);
 
-        Optional<Atendimento> existingAtendimentoOpt = atendimentoGateway.findById(id);
+        Optional<Atendimento> existingAtendimentoOpt = atendimentoGateway.findById(atendimentoID);
         Atendimento existingAtendimento = existingAtendimentoOpt
-                .orElseThrow(() -> new AtendimentoNotFoundException("Atendimento com ID " + id + " não encontrado."));
+                .orElseThrow(() -> new AtendimentoNotFoundException("Atendimento com ID " + atendimentoID + " não encontrado."));
 
         existingAtendimento.setNomeProfissional(atendimento.getNomeProfissional());
         existingAtendimento.setEspecialidade(atendimento.getEspecialidade());
         existingAtendimento.setRegistroAtendimento(atendimento.getRegistroAtendimento());
         existingAtendimento.setRetorno(atendimento.getRetorno());
-        existingAtendimento.setPaciente(atendimento.getPaciente());
 
-        System.out.println("Classe UpdateAtendimentoUseCaseImpl - ATENDIMENTO DA VIEW: " + atendimento);
-        System.out.println("Classe UpdateAtendimentoUseCaseImpl - ATEDIMENTO NO BD: " + existingAtendimento);
-
-        return atendimentoGateway.updateAtendimento(id, existingAtendimento);
+        return atendimentoGateway.updateAtendimento(atendimentoID, existingAtendimento);
     }
 
     public void validateAtendimento(Atendimento atendimento) {
